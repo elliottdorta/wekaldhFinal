@@ -129,6 +129,17 @@ public class interfazGrafica {
 		JLabel lblAlgoritmo = new JLabel("algoritmo");
 		panel.add(lblAlgoritmo);
 		
+		btnJ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				J48Tree j48 = new J48Tree(file_data[0]);
+				try {
+					dtrpnResultado.setText(j48.resultado);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		
 		btnKstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LazyKStar kstar = new LazyKStar(file_data[0]);
