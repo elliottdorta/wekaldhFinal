@@ -115,6 +115,7 @@ public class interfazGrafica {
 		panel_seleccion.add(btnJ);
 		
 		JButton btnKstart = new JButton("KStart");
+		
 		panel_seleccion.add(btnKstart);
 		
 		JPanel panel = new JPanel();
@@ -127,16 +128,18 @@ public class interfazGrafica {
 		
 		JLabel lblAlgoritmo = new JLabel("algoritmo");
 		panel.add(lblAlgoritmo);
+		
 		btnKstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*LazyKStar kstar = new LazyKStar(file_data[0]);
+				LazyKStar kstar = new LazyKStar(file_data[0]);
 				try {
 					dtrpnResultado.setText(kstar.PrintResult());
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}*/
-			}
-		});
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		
 		btnCargarArchvio.addActionListener(new ActionListener() {
 			File[] file_input = null;
 			public void actionPerformed(ActionEvent e) {
