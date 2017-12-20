@@ -5,7 +5,9 @@ import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import weka.core.Instance;
+import java.util.Random;
+
+import weka.classifiers.Evaluation;
 import weka.classifiers.functions.LinearRegression;
 
 /**
@@ -15,13 +17,16 @@ import weka.classifiers.functions.LinearRegression;
  */
 public class LinearRegressionWeka {
 	
-	LinearRegression model;
-	Instance me = null;
+	
+	private Evaluation eval;
 	/**
 	 * class constructor 
 	 * @param file from datasheet
 	 */
 	public LinearRegressionWeka(File file_data) {
+			
+			LinearRegression model;
+			//Instance me = null;
 		
 			try{
 				ArffLoader loader = new ArffLoader();
@@ -32,11 +37,17 @@ public class LinearRegressionWeka {
 						new BufferedReader(
 								new FileReader(file_data)));
 				data.setClassIndex(data.numAttributes() - 1);
-				//treinar modelo
+				
+				
 				model = new LinearRegression();
 				model.buildClassifier(data);
-				me = data.lastInstance();
-		                 
+				//me = data.lastInstance();
+				
+				eval = new Evaluation(data);
+				eval.crossValidateModel(model, data, 10, new Random(1));
+		        
+				//System.out.println(eval.toSummaryString());
+				
 		} catch(Exception e) {
 	        e.printStackTrace();
 	    }
@@ -45,10 +56,9 @@ public class LinearRegressionWeka {
 	
 	String PrintResult() throws Exception {
 		
-		String resultado = "";
-		resultado = model.toString();
+		String resultado = "Linear Regression";
 		resultado += "\n";
-		resultado += me.toString();
+		resultado += eval.toSummaryString();
 		resultado += "\n";
         
         return resultado;
