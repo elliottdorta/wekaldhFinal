@@ -20,6 +20,9 @@ public class interfazGrafica {
 	
 	File[] file_data = null;
 	private JEditorPane dtrpnResultado;
+	private JLabel lblNombreArchivo;
+	private JLabel lblAlgoritmo;
+	private JButton btnCargarArchvio;
 
 	/**
 	 * Main Principal de la Ventana.
@@ -82,11 +85,12 @@ public class interfazGrafica {
 		panel_archivo.setBounds(74, 69, 461, 37);
 		frmProyectoFinalWeka.getContentPane().add(panel_archivo);
 		
-		JButton btnCargarArchvio = new JButton("Cargar Archvio");
+		btnCargarArchvio = new JButton("Cargar Archvio");
 		panel_archivo.add(btnCargarArchvio);
 		
-		JLabel lblNombreArchivo = new JLabel("Nombre_Archivo");
+		lblNombreArchivo = new JLabel("Nombre_Archivo");
 		panel_archivo.add(lblNombreArchivo);
+		lblNombreArchivo.setVisible(false);
 		
 		JPanel panel_seleccion = new JPanel();
 		panel_seleccion.setBackground(Color.WHITE);
@@ -99,8 +103,18 @@ public class interfazGrafica {
 		JButton btnRegresinS = new JButton("REGRESIÓN S");
 		panel_seleccion.add(btnRegresinS);
 		
-		JButton btnRegresinM = new JButton("REGRESIÓN M");
-		panel_seleccion.add(btnRegresinM);
+		JButton btnLRegresion = new JButton("Linear Regression");
+		btnLRegresion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LinearRegressionWeka lin_reg = new LinearRegressionWeka(file_data[0]);
+				try {
+					dtrpnResultado.setText(lin_reg.PrintResult());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		panel_seleccion.add(btnLRegresion);
 		
 		JButton btnRamdonForest = new JButton("RAMDON FOREST");
 		panel_seleccion.add(btnRamdonForest);
@@ -126,11 +140,16 @@ public class interfazGrafica {
 		JLabel lblAlgortimoSeleccionado = new JLabel("Algortimo Seleccionado:");
 		panel.add(lblAlgortimoSeleccionado);
 		
-		JLabel lblAlgoritmo = new JLabel("algoritmo");
+		lblAlgoritmo = new JLabel("algoritmo");
 		panel.add(lblAlgoritmo);
+		lblAlgoritmo.setVisible(false);
 		
 		btnJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblAlgoritmo.setVisible(true);
+				lblAlgoritmo.setText("J48Tree");
+				
 				J48Tree j48 = new J48Tree(file_data[0]);
 				try {
 					dtrpnResultado.setText(j48.resultado);
@@ -142,6 +161,10 @@ public class interfazGrafica {
 		
 		btnKstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblAlgoritmo.setVisible(true);
+				lblAlgoritmo.setText("KStar");
+				
 				LazyKStar kstar = new LazyKStar(file_data[0]);
 				try {
 					dtrpnResultado.setText(kstar.PrintResult());
@@ -153,6 +176,10 @@ public class interfazGrafica {
 		
 		btnRamdonForest.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblAlgoritmo.setVisible(true);
+				lblAlgoritmo.setText("Random Forest");
+				
 				RandomForest_Tree rForest = new RandomForest_Tree(file_data[0]);
 				try {
 					dtrpnResultado.setText(rForest.PrintResult());
@@ -164,6 +191,10 @@ public class interfazGrafica {
 		
 		btnZeror.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblAlgoritmo.setVisible(true);
+				lblAlgoritmo.setText("ZeroR");
+				
 				ZeroR_Alg zeroR = new ZeroR_Alg(file_data[0]);
 				try {
 					dtrpnResultado.setText(zeroR.PrintResult());
@@ -178,9 +209,11 @@ public class interfazGrafica {
 			public void actionPerformed(ActionEvent e) {
 				file_input= new FileSelector().chooseFiles();
                 if(file_input != null){
-                		//System.out.println( "Fichero cargado correctamente" );
                 		file_data = file_input;
+                		lblNombreArchivo.setVisible(true);
+                		lblNombreArchivo.setText(file_input[0].getName());
                 }
+                btnCargarArchvio.setEnabled(false);
 			}
 		});
 		
