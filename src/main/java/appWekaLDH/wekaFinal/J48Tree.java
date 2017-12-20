@@ -29,7 +29,7 @@ public class J48Tree {
 				try	{
 			          
 			           
-						ArffLoader loader = new ArffLoader();
+					  ArffLoader loader = new ArffLoader();
 			           
 			           loader.setFile(file_data);
 			           trainIns = loader.getDataSet();

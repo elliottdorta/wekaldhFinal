@@ -140,6 +140,14 @@ public class interfazGrafica {
 				}
 			});
 		
+		btnMp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				M5PTree alg = new M5PTree();
+				dtrpnResultado.setText(alg.ejecutarRandomForest(file_data[0]));	
+				}
+			});
+		
 		btnKstart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LazyKStar kstar = new LazyKStar(file_data[0]);
