@@ -10,18 +10,22 @@ import java.util.Random;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.M5P;
 
+// TODO: Auto-generated Javadoc
 /**
- * Apply M5P from Weka to the data set
- * @author Elliott Dorta
+ * Apply M5P from Weka to the data set.
  *
+ * @author Elliott Dorta
  */
 public class M5PTree {
 	
 	
+	/** The eval. */
 	private Evaluation eval;
+	
 	/**
-	 * class constructor 
-	 * @param file from datasheet
+	 * class constructor .
+	 *
+	 * @param file_data the file data
 	 */
 	public M5PTree(File file_data) {
 			
@@ -54,6 +58,12 @@ public class M5PTree {
 
 	}
 	
+	/**
+	 * Prints the result.
+	 *
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	String PrintResult() throws Exception {
 		
 		String resultado = "Algoritmo M5P";

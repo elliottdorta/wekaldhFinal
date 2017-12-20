@@ -21,6 +21,11 @@ public class J48Tree {
 	
 	public String resultado;
 	
+	/**
+	 * Instantiates a new j 48 tree.
+	 *
+	 * @param file_data the file data
+	 */
 	public J48Tree(File file_data) {
 			
 				Instances trainIns = null;

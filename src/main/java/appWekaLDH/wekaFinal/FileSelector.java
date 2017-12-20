@@ -5,11 +5,17 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+// TODO: Auto-generated Javadoc
 /**
- *Seleccionar los ficheros
- * 
+ * Seleccionar los ficheros.
  */
 public class FileSelector{
+    
+    /**
+     * Choose files.
+     *
+     * @return the file[]
+     */
     public File[] chooseFiles(){
         JFileChooser chooser = null;
         File[] entradas = null;
@@ -29,6 +35,11 @@ public class FileSelector{
         }
     }
     
+    /**
+     * Choose directory.
+     *
+     * @return the file
+     */
     public File chooseDirectory(){
         JFileChooser chooser = null;
         File diretorio = null;

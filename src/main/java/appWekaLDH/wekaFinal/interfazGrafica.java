@@ -160,7 +160,11 @@ package appWekaLDH.wekaFinal;
  			});
  		
  		btnMp.addActionListener(new ActionListener() {
- 			public void actionPerformed(ActionEvent e) {
+ 			
+			 /* (non-Javadoc)
+			  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			  */
+			 public void actionPerformed(ActionEvent e) {
  				
  				lblAlgoritmo.setVisible(true);
  				lblAlgoritmo.setText("M5P");
