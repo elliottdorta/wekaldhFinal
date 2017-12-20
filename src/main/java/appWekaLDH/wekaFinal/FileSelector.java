@@ -5,20 +5,14 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-// TODO: Auto-generated Javadoc
 /**
- * Seleccionar los ficheros.
+ *Seleccionar los ficheros
+ * 
  */
 public class FileSelector{
-    
-    /**
-     * Choose files.
-     *
-     * @return the file[]
-     */
-    public File[] chooseFiles(){
+    public File chooseFiles(){
         JFileChooser chooser = null;
-        File[] entradas = null;
+        File entradas = null;
         try{
             chooser = new JFileChooser();
             chooser.setMultiSelectionEnabled(true);
@@ -26,7 +20,7 @@ public class FileSelector{
             int retorno = chooser.showOpenDialog(null);
             
             if(retorno == JFileChooser.APPROVE_OPTION){
-                entradas = chooser.getSelectedFiles();
+                entradas = chooser.getSelectedFile();
             }
             return entradas;
         }finally{
@@ -35,11 +29,6 @@ public class FileSelector{
         }
     }
     
-    /**
-     * Choose directory.
-     *
-     * @return the file
-     */
     public File chooseDirectory(){
         JFileChooser chooser = null;
         File diretorio = null;

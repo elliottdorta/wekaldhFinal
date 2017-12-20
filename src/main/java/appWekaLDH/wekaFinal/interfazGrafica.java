@@ -18,7 +18,7 @@ package appWekaLDH.wekaFinal;
  
  	private JFrame frmProyectoFinalWeka;
  	
- 	File[] file_data = null;
+ 	File file_data = null;
  	private JEditorPane dtrpnResultado;
  	private JLabel lblNombreArchivo;
  	private JLabel lblAlgoritmo;
@@ -106,7 +106,7 @@ package appWekaLDH.wekaFinal;
  		JButton btnLRegresion = new JButton("Linear Regression");
  		btnLRegresion.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent e) {
- 				LinearRegressionWeka lin_reg = new LinearRegressionWeka(file_data[0]);
+ 				LinearRegressionWeka lin_reg = new LinearRegressionWeka(file_data);
  				try {
  					dtrpnResultado.setText(lin_reg.PrintResult());
  					} catch (Exception e1) {
@@ -150,28 +150,9 @@ package appWekaLDH.wekaFinal;
  				lblAlgoritmo.setVisible(true);
  				lblAlgoritmo.setText("J48Tree");
  				
- 				J48Tree j48 = new J48Tree(file_data[0]);
+ 				J48Tree j48 = new J48Tree(file_data);
  				try {
  					dtrpnResultado.setText(j48.resultado);
- 					} catch (Exception e1) {
- 						e1.printStackTrace();
- 						}
- 				}
- 			});
- 		
- 		btnMp.addActionListener(new ActionListener() {
- 			
-			 /* (non-Javadoc)
-			  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-			  */
-			 public void actionPerformed(ActionEvent e) {
- 				
- 				lblAlgoritmo.setVisible(true);
- 				lblAlgoritmo.setText("M5P");
- 				
- 				M5PTree m5p = new M5PTree(file_data[0]);
- 				try {
- 					dtrpnResultado.setText(m5p.PrintResult());
  					} catch (Exception e1) {
  						e1.printStackTrace();
  						}
@@ -184,7 +165,7 @@ package appWekaLDH.wekaFinal;
  				lblAlgoritmo.setVisible(true);
  				lblAlgoritmo.setText("KStar");
  				
- 				LazyKStar kstar = new LazyKStar(file_data[0]);
+ 				LazyKStar kstar = new LazyKStar(file_data);
  				try {
  					dtrpnResultado.setText(kstar.PrintResult());
  					} catch (Exception e1) {
@@ -199,7 +180,7 @@ package appWekaLDH.wekaFinal;
  				lblAlgoritmo.setVisible(true);
  				lblAlgoritmo.setText("Random Forest");
  				
- 				RandomForest_Tree rForest = new RandomForest_Tree(file_data[0]);
+ 				RandomForest_Tree rForest = new RandomForest_Tree(file_data);
  				try {
  					dtrpnResultado.setText(rForest.PrintResult());
  					} catch (Exception e1) {
@@ -214,7 +195,7 @@ package appWekaLDH.wekaFinal;
  				lblAlgoritmo.setVisible(true);
  				lblAlgoritmo.setText("ZeroR");
  				
- 				ZeroR_Alg zeroR = new ZeroR_Alg(file_data[0]);
+ 				ZeroR_Alg zeroR = new ZeroR_Alg(file_data);
  				try {
  					dtrpnResultado.setText(zeroR.PrintResult());
  					} catch (Exception e1) {
@@ -224,13 +205,13 @@ package appWekaLDH.wekaFinal;
  			});
  		
  		btnCargarArchvio.addActionListener(new ActionListener() {
- 			File[] file_input = null;
+ 			File file_input = null;
  			public void actionPerformed(ActionEvent e) {
  				file_input= new FileSelector().chooseFiles();
                  if(file_input != null){
                  		file_data = file_input;
                  		lblNombreArchivo.setVisible(true);
-                		lblNombreArchivo.setText(file_input[0].getName());
+                		lblNombreArchivo.setText(file_input.getName());
                  }
                  btnCargarArchvio.setEnabled(false);
  			}
