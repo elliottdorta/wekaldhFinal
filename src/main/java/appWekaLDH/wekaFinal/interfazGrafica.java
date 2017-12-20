@@ -99,8 +99,18 @@ public class interfazGrafica {
 		JButton btnRegresinS = new JButton("REGRESIÓN S");
 		panel_seleccion.add(btnRegresinS);
 		
-		JButton btnRegresinM = new JButton("REGRESIÓN M");
-		panel_seleccion.add(btnRegresinM);
+		JButton btnLRegresion = new JButton("Linear Regression");
+		btnLRegresion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LinearRegressionWeka lin_reg = new LinearRegressionWeka(file_data[0]);
+				try {
+					dtrpnResultado.setText(lin_reg.PrintResult());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		panel_seleccion.add(btnLRegresion);
 		
 		JButton btnRamdonForest = new JButton("RAMDON FOREST");
 		panel_seleccion.add(btnRamdonForest);
