@@ -140,6 +140,28 @@ public class interfazGrafica {
 				}
 			});
 		
+		btnRamdonForest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RandomForest_Tree rForest = new RandomForest_Tree(file_data[0]);
+				try {
+					dtrpnResultado.setText(rForest.PrintResult());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		
+		btnZeror.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ZeroR_Alg zeroR = new ZeroR_Alg(file_data[0]);
+				try {
+					dtrpnResultado.setText(zeroR.PrintResult());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						}
+				}
+			});
+		
 		btnCargarArchvio.addActionListener(new ActionListener() {
 			File[] file_input = null;
 			public void actionPerformed(ActionEvent e) {
