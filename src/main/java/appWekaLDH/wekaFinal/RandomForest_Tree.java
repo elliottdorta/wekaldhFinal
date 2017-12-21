@@ -1,6 +1,8 @@
 package appWekaLDH.wekaFinal;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Random;
 
 import weka.classifiers.Evaluation;
@@ -14,50 +16,53 @@ import weka.core.converters.ArffLoader;
  */
 public class RandomForest_Tree {
 
+	/** The eval. */
 	private Evaluation eval;
 	
 	/**
-	 * class constructor 
-	 * @param file from datasheet
+	 * class constructor .
+	 *
+	 * @param file_data the file data
 	 */
 	public RandomForest_Tree(File file_data) {
+			
+			RandomForest model;
 		
-			Instances trainIns = null;
-			RandomForest rforest;
 			try{
-		           ArffLoader loader = new ArffLoader();
+				ArffLoader loader = new ArffLoader();
 		           
-		           loader.setFile(file_data);
-		           trainIns = loader.getDataSet();
-		          
-		           
-		           trainIns.setClassIndex(trainIns.numAttributes()-1);
-		           
-		           rforest = (RandomForest)Class.forName("weka.classifiers.trees.RandomForest").newInstance();
-		           
-		           rforest.buildClassifier(trainIns);
-		           
-		           eval = new Evaluation(trainIns);
-		           
-		           eval.crossValidateModel(rforest, trainIns, 10, new Random(1));
-		                 
+		        loader.setFile(file_data);
+				
+		        Instances data = new Instances(
+						new BufferedReader(
+								new FileReader(file_data)));
+				data.setClassIndex(data.numAttributes() - 1);
+				
+				
+				model = new RandomForest();
+				model.buildClassifier(data);
+				
+				eval = new Evaluation(data);
+				eval.crossValidateModel(model, data, 10, new Random(1));
+				
 		} catch(Exception e) {
 	        e.printStackTrace();
 	    }
 
 	}
 	
+	/**
+	 * Prints the result.
+	 *
+	 * @return the string
+	 * @throws Exception the exception
+	 */
 	String PrintResult() throws Exception {
 		
-		String resultado = "";
-        resultado = eval.toClassDetailsString();
-        resultado += "\n";
-        resultado += eval.toCumulativeMarginDistributionString();
-        resultado += "\n";
-        resultado += eval.toSummaryString();
-        resultado += "\n";
-        resultado += eval.toMatrixString();
-        resultado += "\n";
+		String resultado = "Algoritmo RandomForest";
+		resultado += "\n";
+		resultado += eval.toSummaryString();
+		resultado += "\n";		
         
         return resultado;
 	}
