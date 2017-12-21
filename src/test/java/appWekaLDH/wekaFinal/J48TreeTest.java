@@ -1,6 +1,6 @@
 package appWekaLDH.wekaFinal;
 
-import static org.junit.Assert.fail;
+
 
 import java.io.File;
 

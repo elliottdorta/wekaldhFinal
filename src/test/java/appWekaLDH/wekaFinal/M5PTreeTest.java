@@ -24,11 +24,12 @@ public class M5PTreeTest extends TestCase {
 	}
 	
 	public final void testPrintResult() throws Exception {
-		File file_import = new File("datasheets/iris.arff");
+		File file_import = new File("datasheets/cpu.arff");
 		M5PTree tester = new M5PTree(file_import);	
 		String resultado = tester.PrintResult();
 		assertTrue(resultado != "");	
 	}
+	
 	
 	public final void testClassWekaJ48Tree() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		M5P m5p = (M5P)Class.forName("weka.classifiers.trees.M5P").newInstance();
