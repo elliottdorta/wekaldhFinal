@@ -219,6 +219,21 @@ package appWekaLDH.wekaFinal;
  				}
  			});
  		
+ 		btnKmeans.addActionListener(new ActionListener() {
+ 			public void actionPerformed(ActionEvent e) {
+ 				
+ 				lblAlgoritmo.setVisible(true);
+ 				lblAlgoritmo.setText("K-Means");
+ 				
+ 				LazyIBk knn = new LazyIBk(file_data);
+ 				try {
+ 					dtrpnResultado.setText(knn.PrintResult());
+ 					} catch (Exception e1) {
+ 						e1.printStackTrace();
+ 						}
+ 				}
+ 			});
+ 		
  		btnCargarArchvio.addActionListener(new ActionListener() {
  			File file_input = null;
  			public void actionPerformed(ActionEvent e) {
