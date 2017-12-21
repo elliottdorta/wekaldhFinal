@@ -244,21 +244,6 @@ package appWekaLDH.wekaFinal;
  				}
  			});
  		
- 		/*btnRegresinS.addActionListener(new ActionListener() {
- 			public void actionPerformed(ActionEvent e) {
- 				
- 				lblAlgoritmo.setVisible(true);
- 				lblAlgoritmo.setText("Regresión S");
- 				
- 				SimpleLinearRegressionWeka simpleLR = new SimpleLinearRegressionWeka(file_data);
- 				try {
- 					dtrpnResultado.setText(simpleLR.PrintResult());
- 					} catch (Exception e1) {
- 						e1.printStackTrace();
- 						}
- 				}
- 			});*/
- 		
  		btnCargarArchvio.addActionListener(new ActionListener() {
  			File file_input = null;
  			public void actionPerformed(ActionEvent e) {
