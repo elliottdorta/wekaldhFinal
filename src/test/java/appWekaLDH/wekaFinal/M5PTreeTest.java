@@ -3,7 +3,7 @@ package appWekaLDH.wekaFinal;
 
 import java.io.File;
 
-import org.junit.Test;
+
 
 import junit.framework.TestCase;
 import weka.classifiers.trees.M5P;
@@ -15,13 +15,6 @@ import weka.classifiers.trees.M5P;
  */
 public class M5PTreeTest extends TestCase {
 
-	/**
-	 * Test.
-	 */
-	@Test
-	public void test() {
-		assertNotNull("Not yet implemented");
-	}
 
 	
 	/**

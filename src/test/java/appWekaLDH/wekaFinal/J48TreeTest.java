@@ -4,7 +4,6 @@ package appWekaLDH.wekaFinal;
 
 import java.io.File;
 
-import org.junit.Test;
 
 import junit.framework.TestCase;
 import weka.classifiers.trees.J48;
@@ -16,13 +15,6 @@ import weka.classifiers.trees.J48;
  */
 public class J48TreeTest extends TestCase {
 
-	/**
-	 * Test.
-	 */
-	@Test
-	public void test() {
-		assertNotNull("Not yet implemented");
-	}
 
 	
 	/**
