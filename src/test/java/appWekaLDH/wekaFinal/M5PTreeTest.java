@@ -1,16 +1,15 @@
 package appWekaLDH.wekaFinal;
 
-import static org.junit.Assert.fail;
 
 import java.io.File;
 
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import weka.classifiers.trees.J48;
+import weka.classifiers.trees.M5P;
 
 
-public class J48TreeTest extends TestCase {
+public class M5PTreeTest extends TestCase {
 
 	@Test
 	public void test() {
@@ -19,20 +18,21 @@ public class J48TreeTest extends TestCase {
 
 	
 	public final void testJ48Tree() {
-		File file_import = new File("datasheets/iris.arff");
-		J48Tree tester = new J48Tree(file_import);
+		File file_import = new File("datasheets/cpu.arff");
+		M5PTree tester = new M5PTree(file_import);
 		assertNotNull(tester);
 	}
 	
 	public final void testPrintResult() throws Exception {
 		File file_import = new File("datasheets/iris.arff");
-		J48Tree tester = new J48Tree(file_import);	
-		assertTrue(tester.resultado != "");	
+		M5PTree tester = new M5PTree(file_import);	
+		String resultado = tester.PrintResult();
+		assertTrue(resultado != "");	
 	}
 	
 	public final void testClassWekaJ48Tree() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		J48 j48 = (J48)Class.forName("weka.classifiers.trees.J48").newInstance();
-		assertNotNull(j48);
+		M5P m5p = (M5P)Class.forName("weka.classifiers.trees.M5P").newInstance();
+		assertNotNull(m5p);
 	}
 
 }
