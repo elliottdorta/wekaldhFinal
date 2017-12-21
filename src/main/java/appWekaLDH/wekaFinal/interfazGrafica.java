@@ -159,6 +159,21 @@ package appWekaLDH.wekaFinal;
  				}
  			});
  		
+ 		btnMp.addActionListener(new ActionListener() {
+ 			public void actionPerformed(ActionEvent e) {
+ 				
+ 				lblAlgoritmo.setVisible(true);
+ 				lblAlgoritmo.setText("M5PTree");
+ 				
+ 				M5PTree m5p = new M5PTree(file_data);
+ 				try {
+ 					dtrpnResultado.setText(m5p.PrintResult());
+ 					} catch (Exception e1) {
+ 						e1.printStackTrace();
+ 						}
+ 				}
+ 			});
+ 		
  		btnKstart.addActionListener(new ActionListener() {
  			public void actionPerformed(ActionEvent e) {
  				
