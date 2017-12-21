@@ -51,14 +51,14 @@ public class SimpleLinearRegressionWeka {
 	String PrintResult() throws Exception {
 	
 		String resultado = "";
-		resultado = eval.toClassDetailsString();
+	//	resultado = eval.toClassDetailsString();
 		resultado += "\n";
-		resultado += eval.toCumulativeMarginDistributionString();
-		resultado += "\n";
+	//	resultado += eval.toCumulativeMarginDistributionString();
+	// += "\n";
 		resultado += eval.toSummaryString();
 		resultado += "\n";
-		resultado += eval.toMatrixString();
-		resultado += "\n";
+	//	resultado += eval.toMatrixString();
+	//	resultado += "\n";
  
 		return resultado;
 	}

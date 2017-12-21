@@ -101,6 +101,16 @@ package appWekaLDH.wekaFinal;
  		panel_seleccion.add(btnKmeans);
  		
  		JButton btnRegresinS = new JButton("REGRESIÓN S");
+ 		btnRegresinS.addActionListener(new ActionListener() {
+ 			public void actionPerformed(ActionEvent e) {
+ 				SimpleLinearRegressionWeka sim_reg = new SimpleLinearRegressionWeka(file_data);
+ 				try {
+ 					dtrpnResultado.setText(sim_reg.PrintResult());
+ 					} catch (Exception e1) {
+ 						e1.printStackTrace();
+ 						}
+ 				}
+ 			});
  		panel_seleccion.add(btnRegresinS);
  		
  		JButton btnLRegresion = new JButton("Linear Regression");
@@ -233,6 +243,21 @@ package appWekaLDH.wekaFinal;
  						}
  				}
  			});
+ 		
+ 		/*btnRegresinS.addActionListener(new ActionListener() {
+ 			public void actionPerformed(ActionEvent e) {
+ 				
+ 				lblAlgoritmo.setVisible(true);
+ 				lblAlgoritmo.setText("Regresión S");
+ 				
+ 				SimpleLinearRegressionWeka simpleLR = new SimpleLinearRegressionWeka(file_data);
+ 				try {
+ 					dtrpnResultado.setText(simpleLR.PrintResult());
+ 					} catch (Exception e1) {
+ 						e1.printStackTrace();
+ 						}
+ 				}
+ 			});*/
  		
  		btnCargarArchvio.addActionListener(new ActionListener() {
  			File file_input = null;
